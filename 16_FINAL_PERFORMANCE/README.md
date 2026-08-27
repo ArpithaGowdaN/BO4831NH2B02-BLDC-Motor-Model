@@ -261,6 +261,9 @@ review points.
  FINAL STAGE 16 COMPLETE
 ============================================================
 
+Conclusion:
+The BLDC motor model and PI-based speed control system were successfully developed and validated. The simulated motor achieves a rated speed of 7700 rpm with a final closed-loop speed error of only 0.00203%, zero overshoot, a rise time of 14.45 ms, and a settling time of 50.90 ms. Under a 0.2 N·m load disturbance, the speed temporarily drops by approximately 54.29 rpm and subsequently recovers to 7700 rpm with a final error of only 0.000288%. The rated speed, current, torque, electrical frequency, and Hall frequency agree with the specified motor data. Differences in the effective back-EMF and torque constants, together with the theoretical PWM duty slightly exceeding 100%, are identified as model-to-datasheet review points. Overall, the developed BLDC motor model and PI controller demonstrate satisfactory speed-tracking and disturbance-rejection performance.
+
 
 <img width="1622" height="935" alt="image" src="https://github.com/user-attachments/assets/fd86cd5f-dc61-4466-88dd-b1af6333f9e4" />
 <img width="1917" height="932" alt="image" src="https://github.com/user-attachments/assets/57bcc1ba-7f27-4cf1-9ea9-7ce99f563031" />
