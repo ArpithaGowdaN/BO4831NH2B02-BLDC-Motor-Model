@@ -155,3 +155,17 @@ Load disturbance test: COMPLETED
 Saturation test: COMPLETED  
 Speed variation test: COMPLETED  
 Final validation: COMPLETED
+
+Final Conclusion
+
+A mathematical and simulation-based model of the BO4831NH2B02-101-24.0, 24-V BLDC motor was developed and analyzed using its electrical and mechanical parameters. The model incorporates the motor resistance, inductance, back-EMF constant, torque constant, rotor inertia, mechanical damping, pole-pair number, rated speed, current, and torque. The electrical and mechanical equations were used to establish the motor transfer function and its dynamic behavior.
+
+A PI speed controller with \(K_p=0.15\) and \(K_i=8\) was implemented to regulate the motor speed. The final closed-loop simulation achieved a speed of 7699.84 rpm for a 7700-rpm reference, corresponding to only 0.00203% steady-state error. The response exhibited 0% overshoot, a rise time of 14.45 ms, and a settling time of 50.90 ms.
+
+The robustness of the controller was further evaluated by applying a 0.2-N·m load disturbance at 1 s. The motor speed decreased by approximately 54.29 rpm but recovered to approximately 7700 rpm, resulting in a final speed error of only 0.000288%. This demonstrates effective speed regulation and disturbance rejection.
+
+Fourteen performance characteristics were generated to analyze the motor's speed, torque, current, back-EMF, power, efficiency, electrical frequency, Hall transition frequency, PWM duty, closed-loop response, and load behavior. The rated speed, current, torque, electrical frequency, and Hall frequency were successfully validated against the specified motor data.
+
+However, differences of 22.25% in the effective back-EMF constant and 12.88% in the effective torque constant were identified and documented as model-to-datasheet review points. The calculated rated operating voltage of 24.00009 V also results in a theoretical PWM duty of approximately 100.0004%, indicating that the rated operating point is effectively at the 24-V supply limit. These discrepancies are retained transparently rather than artificially modifying the locked model parameters.
+
+Overall, the project successfully demonstrates mathematical modeling, MATLAB/Simulink implementation, PI-based speed control, transient-performance evaluation, disturbance rejection, performance-characteristic analysis, and datasheet-based validation of the selected BLDC motor.
