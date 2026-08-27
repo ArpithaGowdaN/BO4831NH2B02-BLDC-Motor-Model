@@ -56,15 +56,14 @@ Rated speed             = 7700.000000 rpm
 Mechanical speed        = 806.342114 rad/s
 Mechanical frequency    = 128.333333 Hz
 Electrical frequency    = 898.333333 Hz
-Electrical speed        = 5644.394801 rad/s
+Hall transition frequency = 5390.000000 Hz
 Rated back-EMF          = 22.592093 V
 I*R voltage drop        = 1.408000 V
 Required voltage        = 24.000093362 V
 Required duty           = 1.000003890
 Required duty           = 100.000389 %
-Calculated torque       = 0.447004800 N.m
-Rated mechanical power  = 360.434925146 W
-DC electrical power     = 422.400000000 W
+Rated mechanical power  = 360.434925 W
+DC electrical power     = 422.400000 W
 Simplified efficiency   = 85.330238 %
 
 ============================================================
@@ -94,37 +93,55 @@ Continuous-time transfer function.
 
 
 ============================================================
+ CLOSED-LOOP TRANSFER FUNCTION
+============================================================
+
+Tclosed =
+ 
+                  0.00381 s + 0.2032
+  ---------------------------------------------------
+  2.448e-09 s^3 + 2.449e-06 s^2 + 0.004522 s + 0.2032
+ 
+Continuous-time transfer function.
+
+
+============================================================
  CLOSED-LOOP SPEED RESPONSE
 ============================================================
-Closed-loop DC gain     = 1.000000000
-Final simulated speed   = 0.995612692
-Final speed error       = 0.004387308
-Final speed error       = 0.438730804 %
-
-Closed-loop performance:
-Rise time               = 0.001222 s
-Settling time           = 0.042321 s
-Overshoot               = 13.548731 %
+Closed-loop final speed   = 7699.843404394 rpm
+Final speed error          = 0.156595606 rpm
+Final speed error          = 0.002033709 %
+Maximum speed              = 7699.843404394 rpm
+Overshoot                  = 0.000000000 %
+Rise time                  = 0.014454191 s
+Settling time              = 0.050902144 s
 
 ============================================================
  LOAD DISTURBANCE RESPONSE
 ============================================================
 Disturbance time          = 1.000000 s
-Applied load torque       = 0.200000000 N.m
-Pre-disturbance speed     = 7699.769618875 rpm
-Minimum post-disturbance = 7366.717410162 rpm
-Speed drop                = 333.052208713 rpm
-Final speed               = 7699.797658016 rpm
-Final speed error         = 0.202341984 rpm
-Final speed error         = 0.002627818 %
+Applied load torque       = 0.200000 N.m
+Pre-disturbance speed     = 7699.999741804 rpm
+Minimum post-disturbance = 7645.711837133 rpm
+Speed drop                = 54.287904671 rpm
+Final speed               = 7700.022192315 rpm
+Final speed error         = 0.022192315 rpm
+Final speed error         = 0.000288212 %
+Recovery time             = 0.000013440 s
 
 ============================================================
- LOAD TORQUE / TORQUE BALANCE
+ LOAD TORQUE-SPEED CHARACTERISTIC
 ============================================================
-Applied load torque       = 0.200000000 N.m
-Viscous torque            = 0.008063421 N.m
-Required steady torque    = 0.208063421 N.m
-Required steady current   = 8.192118322 A
+Load torque range        = 0 to 0.447000 N.m
+Closed-loop speed target = 7700.00 rpm
+
+============================================================
+ TORQUE BALANCE
+============================================================
+Electromagnetic torque   = 0.447004800 N.m
+Viscous torque           = 0.008063421 N.m
+Rated torque             = 0.447000000 N.m
+Net torque               = 0.438941379 N.m
 
 ============================================================
  STAGE 16 FINAL VALIDATION
@@ -132,18 +149,118 @@ Required steady current   = 8.192118322 A
 Rated speed datasheet validation       = PASS
 Rated current datasheet validation     = PASS
 Rated torque datasheet validation      = PASS
-Back-EMF constant validation           = REVIEW
-Torque constant validation             = REVIEW
-PWM duty feasibility                   = REVIEW
+Back-EMF constant validation            = REVIEW
+Torque constant validation              = REVIEW
+Electrical frequency validation         = PASS
+Hall frequency validation               = PASS
+PWM duty feasibility                    = REVIEW
+Closed-loop speed tracking              = PASS
+Load disturbance rejection              = PASS
+
+============================================================
+ FINAL PERFORMANCE SUMMARY
+============================================================
+
+Rated speed                       = 7700.000000 rpm
+Rated current                     = 17.600000 A
+Rated torque                      = 0.447000 N.m
+Rated angular speed               = 806.342114 rad/s
+Electrical frequency              = 898.333333 Hz
+Hall transition frequency         = 5390.000000 Hz
+Back-EMF                          = 22.592093 V
+Required voltage                  = 24.000093362 V
+Required PWM duty                 = 100.000389 %
+Mechanical power                  = 360.434925 W
+DC electrical power               = 422.400000 W
+Simplified efficiency              = 85.330238 %
+
+Closed-loop final speed           = 7699.843404 rpm
+Closed-loop speed error           = 0.002034 %
+Closed-loop overshoot             = 0.000000 %
+Closed-loop rise time             = 0.014454 s
+Closed-loop settling time         = 0.050902 s
+
+Load disturbance                  = 0.200000 N.m
+Disturbance time                  = 1.000000 s
+Minimum post-disturbance speed    = 7645.711837 rpm
+Speed drop                        = 54.287905 rpm
+Final disturbance speed           = 7700.022192 rpm
+Final disturbance error           = 0.000288 %
+Recovery time                     = 0.000013 s
+
+============================================================
+ MODEL-DATASHEET REVIEW
+============================================================
+
+Back-EMF constant difference = 22.251587 %
+Torque constant difference   = 12.880000 %
+Required theoretical duty    = 100.000389 %
+
+The effective Ke and Kt values are retained as locked
+model parameters and are not artificially replaced.
+
+============================================================
+ MODEL LIMITATIONS
+============================================================
+1. Simplified BLDC electrical model.
+2. Effective Ke retained as locked model value.
+3. Effective Kt retained as locked model value.
+4. Hall transition model is idealized.
+5. Trapezoidal back-EMF waveform is not explicitly modeled.
+6. MOSFET switching is not explicitly modeled.
+7. PWM ripple is not explicitly modeled.
+8. Dead time is not modeled.
+9. Inverter semiconductor losses are not modeled.
+10. Thermal effects are not modeled.
+11. Efficiency is a simplified model estimate.
+12. Load disturbance is an imposed simulation condition.
+
+============================================================
+ 14 PERFORMANCE CHARACTERISTICS GENERATED
+============================================================
+01. Speed-Torque
+02. Torque-Current
+03. Back-EMF-Speed
+04. Current-Speed
+05. Mechanical Power-Speed
+06. Electrical Power-Speed
+07. Efficiency-Speed
+08. Electrical Frequency-Speed
+09. Hall Transition Frequency-Speed
+10. PWM Duty-Speed
+11. Mechanical Power-Torque
+12. Closed-Loop Speed Response
+13. Load Disturbance Response
+14. Load Torque-Speed
+
+============================================================
+ STAGE 16 OVERALL RESULT
+============================================================
+STAGE 16 = PASS WITH DOCUMENTED MODEL/DATASHEET REVIEW
+
+============================================================
+ FINAL STAGE 16 CONCLUSION
+============================================================
+
+The BLDC motor model, PI speed controller, rated operating
+point, closed-loop response, load disturbance response,
+and required performance characteristics have been
+evaluated.
+
+Rated speed, rated current and rated torque are compared
+against the specified datasheet values.
+
+Closed-loop speed tracking and load disturbance rejection
+are evaluated using the defined error criteria.
+
+Differences in effective Ke and Kt and the theoretical PWM
+voltage limitation are retained as documented model
+review points.
 
 ============================================================
  FINAL STAGE 16 COMPLETE
 ============================================================
 
-The BLDC motor performance characteristics,
-closed-loop response, load disturbance response,
-and datasheet comparison have been completed.
 
-<img width="1665" height="900" alt="image" src="https://github.com/user-attachments/assets/16adf266-0a45-465c-b640-4ea0b63e0d43" />
-<img width="1612" height="927" alt="image" src="https://github.com/user-attachments/assets/379e10c1-e31d-4d55-b42b-46d02add5384" />
-
+<img width="1622" height="935" alt="image" src="https://github.com/user-attachments/assets/fd86cd5f-dc61-4466-88dd-b1af6333f9e4" />
+<img width="1917" height="932" alt="image" src="https://github.com/user-attachments/assets/57bcc1ba-7f27-4cf1-9ea9-7ce99f563031" />
